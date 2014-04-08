@@ -1,0 +1,42 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fccs="http://www.cornelsen-services.de/BansheeJS" fccs:class="TBookViewer">
+	<svg width="1436" height="983" fccs:class="TDocView">
+		<image x="0" y="0" width="256" height="256" xlink:href="data/tiles01/Page_0_100_0_0.png"/>
+		<image x="256" y="0" width="256" height="256" xlink:href="data/tiles01/Page_0_100_256_0.png"/>
+		<image x="512" y="0" width="256" height="256" xlink:href="data/tiles01/Page_0_100_512_0.png"/>
+		<image x="768" y="0" width="256" height="256" xlink:href="data/tiles01/Page_0_100_768_0.png"/>
+		<image x="1024" y="0" width="256" height="256" xlink:href="data/tiles01/Page_0_100_1024_0.png"/>
+		<image x="1280" y="0" width="156" height="256" xlink:href="data/tiles01/Page_0_100_1280_0.png"/>
+
+		<image x="0" y="256" width="256" height="256" xlink:href="data/tiles01/Page_0_100_0_256.png"/>
+		<image x="256" y="256" width="256" height="256" xlink:href="data/tiles01/Page_0_100_256_256.png"/>
+		<image x="512" y="256" width="256" height="256" xlink:href="data/tiles01/Page_0_100_512_256.png"/>
+		<image x="768" y="256" width="256" height="256" xlink:href="data/tiles01/Page_0_100_768_256.png"/>
+		<image x="1024" y="256" width="256" height="256" xlink:href="data/tiles01/Page_0_100_1024_256.png"/>
+		<image x="1280" y="256" width="156" height="256" xlink:href="data/tiles01/Page_0_100_1280_256.png"/>
+
+		<image x="0" y="512" width="256" height="256" xlink:href="data/tiles01/Page_0_100_0_512.png"/>
+		<image x="256" y="512" width="256" height="256" xlink:href="data/tiles01/Page_0_100_256_512.png"/>
+		<image x="512" y="512" width="256" height="256" xlink:href="data/tiles01/Page_0_100_512_512.png"/>
+		<image x="768" y="512" width="256" height="256" xlink:href="data/tiles01/Page_0_100_768_512.png"/>
+		<image x="1024" y="512" width="256" height="256" xlink:href="data/tiles01/Page_0_100_1024_512.png"/>
+		<image x="1280" y="512" width="156" height="256" xlink:href="data/tiles01/Page_0_100_1280_512.png"/>
+
+		<image x="0" y="768" width="256" height="215" xlink:href="data/tiles01/Page_0_100_0_768.png"/>
+		<image x="256" y="768" width="256" height="215" xlink:href="data/tiles01/Page_0_100_256_768.png"/>
+		<image x="512" y="768" width="256" height="215" xlink:href="data/tiles01/Page_0_100_512_768.png"/>
+		<image x="768" y="768" width="256" height="215" xlink:href="data/tiles01/Page_0_100_768_768.png"/>
+		<image x="1024" y="768" width="256" height="215" xlink:href="data/tiles01/Page_0_100_1024_768.png"/>
+		<image x="1280" y="768" width="156" height="215" xlink:href="data/tiles01/Page_0_100_1280_768.png"/>
+
+		<image x="618" y="391" width="200" height="200" xlink:href="data/button.png"/>
+	</svg>
+
+	<svg width="1436" height="983" fccs:class="THotspotsManager">
+          	  <image x="0" y="0" fccs:NumAssets="1" fccs:Pivot="max,mid" fccs:UserData="Hotspot1" />
+		  <image x="0" y="500" fccs:NumAssets="3" fccs:Pivot="10,15" fccs:UserData="Hotspot2" />		  
+		  <image x="0" y="960" fccs:NumAssets="1" fccs:Pivot="max,mid" fccs:UserData="Hotspot3" />
+		  <image x="1436" y="0" fccs:NumAssets="1" fccs:Pivot="min,mid" fccs:UserData="Hotspot4" />
+		  <image x="1436" y="960" fccs:NumAssets="1" fccs:Pivot="min,mid" fccs:UserData="Hotspot5" />
+		  <image x="1436" y="500" fccs:NumAssets="2" fccs:Pivot="min,mid" fccs:UserData="Hotspot6" />
+	</svg>
+</svg>

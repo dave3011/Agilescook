@@ -1,0 +1,8 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fccs="http://www.cornelsen-services.de/BansheeJS" fccs:class="TBookViewer">
+    <svg width="1436" height="983" fccs:class="TDocView"><image x="0" y="0" width="1436" height="983" xlink:href="../../bv_data/tiles02/Stage_1.jpg"/></svg>
+    <svg width="1436" height="983" fccs:class="THotspotsManager">
+            <image x="0" y="0"  fccs:NumAssets="2" fccs:UserData="hotspot1" />
+    	    <image x="0" y="460"  fccs:NumAssets="4" fccs:UserData="hotspot2" />
+    	    <image x="1436" y="460"  fccs:NumAssets="1" fccs:UserData="hotspot3" />
+    	</svg>
+</svg>

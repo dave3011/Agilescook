@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<book numStages="10" width="100" height="100" initialStageId="0" version="1.0">
+
+	<title>Fachwerk Biologie</title>
+	<stages>
+		<stage caption="Seite 0/0"/>
+		<stage caption="Seite 0/1"/>
+		<stage caption="Seite 2/3"/>
+		<stage caption="Seite 4/5"/>
+		<stage caption="Seite 6/7"/>
+		<stage caption="Seite 8/9"/>
+		<stage caption="Seite 10/11"/>
+
+	</stages>
+	<tableOfContents>
+		<entry stageId="0" caption="Was man lernen kann"/>
+		<entry stageId="0" caption="Reimen mit Zahlen"/>
+		<entry stageId="1" caption="Querlesen"/>
+		<entry stageId="2" caption="Hallo Welt A"/>
+		<entry stageId="3" caption="Bla Bla Bla"/>
+		<entry stageId="300" caption="Ziel==300 numStages==11 >> Fehler"/>
+	</tableOfContents>
+</book>

@@ -1,0 +1,1 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fccs="http://www.cornelsen-services.de/BansheeJS" fccs:class="TBookViewer"><svg width="1436" height="983" fccs:class="TDocView"><image x="0" y="0" width="1436" height="983" xlink:href="../../bv_data/tiles02/Stage_8.jpg"/></svg></svg>

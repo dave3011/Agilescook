@@ -32,7 +32,7 @@ class UserDerKlasseController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'enterconnectcode'),
+				'actions'=>array('create','update', 'enterConnectCode'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -57,9 +57,62 @@ class UserDerKlasseController extends Controller
 	}
 
     /**
-	 *Checks if the connectcode exists in Model Klasse and adds the user to this Klasse
+	 * Checks if the connectcode exists in Model ConnectCode and adds the user to this Klasse
 	 */
 	public function actionEnterConnectCode()
+	{ 
+	
+        if(isset($_POST['connectcodefield']) && !empty($_POST['connectcodefield']))
+        {
+            $connectcode = $_POST['connectcodefield']; //Get connectcode from AJAX Post
+            
+            //check if the connectcode exists
+            $getClass = ConnectCode::model()->find('connectCode=:connectCode', array(':connectCode' => $connectcode)); //find the connectcode in ConnectCode-Model
+            if(empty($getClass)){ //Code not found
+                echo "Code nicht gültig, erneut probieren";
+            }
+            elseif($getClass->status == 1){//if status=1 -> code already used, then it's not valid
+                echo "Der Code wurde bereits verwendet und ist daher nicht gültig.";
+            }
+            
+            else{ //Code found
+                //check if user is not already member of this class
+                $alreadymember = UserDerKlasse::model()->findAllByAttributes(
+                    array(
+                        'userId' => Yii::app()->user->id,
+                        'klasseId' => $getClass->klasseId
+                    )
+                );
+                
+                if(!empty($alreadymember)){//User is already member of this class
+                    echo "<p>Du bist bereit Mitglied der  Klasse <i>" . $getClass->klasseId . "</i></p>";
+                }
+                else{ //User not yet member of this class, create new UserDerKLasse and add User info
+                    $model=new UserDerKlasse;
+                    $model->klasseId = $getClass->klasseId;
+                    $model->userId = Yii::app()->User->id;
+                    $model->timejoined = time();
+                    
+                    $getClass->status = 1;
+                    $getClass->save();
+                    //ToDo: Set status to '1' of ConnectCode
+                    
+                    if($model->save()){
+                        echo "<p>Du bist der Klasse <i>" . $getClass->klasse->name . "</i> beigetreten.<br/>" . CHtml::link('Hier gehts zur Klasse', Yii::app()->createAbsoluteUrl("klasse/kommunikation/", array('id'=>$getClass->klasseId))) . "</p>";
+    		      }
+                }
+            }
+            
+        }
+        else{
+            echo ('Kein Connectcode eingegeben');
+        }
+    }
+
+    /**
+	 * Outdated Checks if the connectcode exists in Model Klasse and adds the user to this Klasse
+	 */
+	public function actionEnterConnectCodeOld()
 	{ 
 	
         if(isset($_POST['connectcodefield']) && !empty($_POST['connectcodefield']))

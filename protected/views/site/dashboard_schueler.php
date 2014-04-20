@@ -29,7 +29,7 @@ $this->pageTitle=Yii::app()->name;
             <div id="container"> 
                 <div class="gutter-sizer"></div>   
                    
-                 <?php if(empty( Yii::app()->user->data()->avatar)){ ?>
+                 <?php if(Yii::app()->user->data()->avatar == 'images/dummy_avatar.png'){ ?>
                  <div class="kachel grau">
                     <div class="kachelhead">Gestalte Dein Profil</div>
                      <div class="kachelcontent">
@@ -214,15 +214,6 @@ $this->pageTitle=Yii::app()->name;
                         <img src="images/image_video.png" width="301" height="177"/>
                     </div>                    
                 </div>    
-
-                
-                <div class="kachel grau">
-                    <div class="kachelhead">Ihre Vorteile als Lehrer</div>
-                    <div class="kachelcontent">
-                        <p>Nur mit einem Nachweis, dass Sie wirklich Lehrer sind können Sie von allen Vorteilen profitieren.</p>
-                        <p class="textaligncenter"><a href="#" class="cta_button_blue">Jetzt als Lehrer authentifizieren</a></p>
-                    </div>                    
-                </div>
                 
             </div>
         </div><!-- end main -->

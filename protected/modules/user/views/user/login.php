@@ -1,43 +1,42 @@
-<div class="whitecontent100" >
-    <div class="content70" style="width: 300px!important; border:1px solid #999; padding:15px;">
-<?php
-$form = new CForm(array(
-  'elements'=>array(
-    'username'=>array(
-      'type'=>'text',
-      'maxlength'=>32,
-    ),
-    'password'=>array(
-      'type'=>'password',
-      'maxlength'=>32,
-    ),
-    'rememberMe'=>array(
-      'type'=>'checkbox',
-    )
-  ),
+<div class="whitecontent" >
+    <div class="content70" style="padding:15px;">
+    <?php
+    $form = new CForm(array(
+      'elements'=>array(
+        'username'=>array(
+          'type'=>'text',
+          'maxlength'=>32,
+        ),
+        'password'=>array(
+          'type'=>'password',
+          'maxlength'=>32,
+        ),
+        'rememberMe'=>array(
+          'type'=>'checkbox',
+        )
+      ),
+    
+      'buttons'=>array(
+        'login'=>array(
+          'type'=>'submit',
+          'label'=>'Login',
+        ),
+      ),
+    ), $model);
+    ?>
 
-  'buttons'=>array(
-    'login'=>array(
-      'type'=>'submit',
-      'label'=>'Login',
-    ),
-  ),
-), $model);
-?>
 
-
-
-<?php
-$this->pageTitle = Yum::t('Login');
-$this->title = Yum::t('Login');
-$this->breadcrumbs=array(Yum::t('Login'));
-
-echo CHtml::beginForm(array('//user/auth/login'));  
-
-if(isset($_GET['action']))
-  echo CHtml::hiddenField('returnUrl', urldecode($_GET['action']));
-
-?>
+    <?php
+    $this->pageTitle = Yum::t('Login');
+    $this->title = Yum::t('Login');
+    $this->breadcrumbs=array(Yum::t('Login'));
+    
+    echo CHtml::beginForm(array('//user/auth/login'));  
+    
+    if(isset($_GET['action']))
+      echo CHtml::hiddenField('returnUrl', urldecode($_GET['action']));
+    
+    ?>
 
 
 <div class="row-fluid">
@@ -99,7 +98,6 @@ foreach(Yum::module()->hybridAuthProviders as $provider)
 </div>
 </div>
 
-
 <?php } ?>
 
 
@@ -128,7 +126,7 @@ if(Yum::hasModule('registration')
 <div class="row-fluid">
 <div class="span12">
 <div class="buttons">
-<?php echo CHtml::submitButton(Yum::t('Login'), array('class' => 'btn cta_button_blue')); ?>
+<?php echo CHtml::submitButton(Yum::t('Login'), array('class' => 'cta_button_blue')); ?>
 </div>
 </div>
 </div>

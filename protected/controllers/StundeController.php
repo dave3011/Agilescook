@@ -65,7 +65,7 @@ class StundeController extends Controller
 		$model=new Stunde;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Stunde']))
 		{

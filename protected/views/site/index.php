@@ -45,18 +45,18 @@ $this->pageTitle=Yii::app()->name;
                 <div class="kachel grau">
                     <div class="kachelhead">Entdecken Sie scook im Video</div>
                     <div class="kachelcontent vollbild">
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_video.png" width="301" height="177"/>
+                        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/image_video.png" width="300" height="177"/>', Yii::app()->createAbsoluteUrl('site/page?view=scook-video'));?>
                     </div>                    
                 </div>
                 
                 <div class="kachel blau">
                     <div class="kachelhead buecher_icon">Ihr Schulbuch digital</div>
                     <div class="kachelcontent">
-                        <p class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_buecher.png" width="300" height="130"/></p>
+                        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/image_buecher.png" width="300" height="130"/>', Yii::app()->createAbsoluteUrl('site/page?view=buchregal'));?> 
                         <p>Das E-Book zu Ihrem Schulbuch steht in Ihrem persönlichen Bücherregal.</p>
                     </div> 
                     <div class="kachelfoot">
-                        <a href="#">mehr ...<span class="scookicons">&#58942;</span></a>
+                        <?php echo CHtml::link('mehr ...<span class="scookicons">&#58942;</span>', Yii::app()->createAbsoluteUrl('site/page?view=buchregal'));?>
                     </div>                    
                 </div>
                 
@@ -90,41 +90,40 @@ $this->pageTitle=Yii::app()->name;
                 <div class="kachel orange">
                     <div class="kachelhead folder_icon">Material suchen</div>
                     <div class="kachelcontent">
-                        <p class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_material.png" width="300" height="105"/></p>
+                        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/image_material.png" width="300" height="105"/>', Yii::app()->createAbsoluteUrl('site/page?view=der-materialbereich'));?> 
                         <p>Sie finden schnell das richtige Material zum Buch - vielfältig und übersichtlich.</p>
                     </div> 
                     <div class="kachelfoot">
-                       
-                        <a href="#">mehr ...<span class="scookicons">&#58942;</span></a>
+                        <?php echo CHtml::link('mehr ...<span class="scookicons">&#58942;</span>', Yii::app()->createAbsoluteUrl('site/page?view=der-materialbereich'));?>
                     </div>                    
                 </div>
                 
                 <div class="kachel gruen">
                     <div class="kachelhead grid_icon">Unterricht effektiv planen</div>
                     <div class="kachelcontent">
-                        <p class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_planung.png" width="300" height="120"/></p>
+                        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/image_planung.png" width="300" height="120"/>', Yii::app()->createAbsoluteUrl('site/page?view=unterrichtsplanung-auf-scook'));?> 
                         <p>Mit dem Stundenplaner können Sie künftig Ihre Stunden effizient vorbereiten.</p>
                     </div> 
                     <div class="kachelfoot">
-                        <a href="#">mehr ...<span class="scookicons">&#58942;</span></a>
-                    </div>                    
+                        <?php echo CHtml::link('mehr ...<span class="scookicons">&#58942;</span>', Yii::app()->createAbsoluteUrl('site/page?view=unterrichtsplanung-auf-scook'));?>
+                    </div>                   
                 </div>
                 
                 <div class="kachel rot">
                     <div class="kachelhead">Du bist Schüler?</div>
                     <div class="kachelcontent">
-                        <p class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_schueler.png" width="300" height="166"/></p>
+                        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/image_schueler.png" width="300" height="166"/>', Yii::app()->createAbsoluteUrl('site/page?view=entdecke-scook-fuer-schueler'));?>
                         <p>Kein lästiges Schleppen mehr: scook hat Dein Schulbuch als E-Book. Und bald noch vieles mehr. </p>
                     </div> 
                     <div class="kachelfoot">
-                        <a href="#">mehr ...<span class="scookicons">&#58942;</span></a>
+                        <?php echo CHtml::link('mehr ...<span class="scookicons">&#58942;</span>', Yii::app()->createAbsoluteUrl('site/page?view=entdecke-scook-fuer-schueler'));?>
                     </div>                    
                 </div>
                 
                 <div class="kachel grau">
                     <div class="kachelhead">scook und seine Partner</div>
                     <div class="kachelcontent">
-                        <p class="img"><img src="src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_partner.png" width="300" height="195"/></p>
+                        <p class="img"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/image_partner.png" width="300" height="195"/></p>
                         <p>scook ist unabhängig und offen für starke Partner mit hochwertigen Inhalten. </p>
                     </div> 
                     <div class="kachelfoot">

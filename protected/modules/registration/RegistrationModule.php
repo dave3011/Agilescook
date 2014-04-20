@@ -18,7 +18,7 @@ class RegistrationModule extends CWebModule {
 	public $enableActivationConfirmation = true; 
 
 	public $registrationEmail='mail@davidbernhard.de';
-	public $recoveryEmail='restore@website.com';
+	public $recoveryEmail='mail@davidbernhard.de';
 
 	// Which roles should be assigned automatically to a fresh registered user?
 	// Use role id, for example array(1,4,5)  

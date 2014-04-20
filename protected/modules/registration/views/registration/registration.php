@@ -1,16 +1,16 @@
 
 <div id="main">
-    <div class="whitecontent100">
+    <div class="whitecontent">
         <div class="content70">
             <h1>Jetzt kostenlos anmelden</h1>
-            
-            <?php $this->breadcrumbs = array(Yum::t('Registration')); ?>
             
             <div class="form formwidth50">
             <?php $activeform = $this->beginWidget('CActiveForm', array(
             			'id'=>'registration-form',
             			'enableAjaxValidation'=>true,
-            			'enableClientValidation'=>true,
+                        'clientOptions'=>array(
+                                    'validateOnSubmit'=>true,
+                            ),
             			'focus'=>array($form,'username'),
             			),
                         array(
@@ -84,7 +84,7 @@
             	
             	<div class="row submit">
                 <div class="span12">
-            		<?php echo CHtml::submitButton('Jetzt registrieren', array('class'=>'btn cta_button_blue')); ?>
+            		<?php echo CHtml::submitButton('Jetzt registrieren', array('class'=>'cta_button_blue')); ?>
                     </div>
             	</div>
             

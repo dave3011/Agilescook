@@ -197,7 +197,7 @@
              
               $.ajax({
                type: 'POST',
-                url: 'http://localhost/agilescook/index.php/stunde/ajaxCreate',
+                url: '../stunde/ajaxCreate',
                 data:data,
                 success:function(data){                
                             $('#lessondetails').html(data).show();

@@ -41,7 +41,7 @@ class SiteController extends Controller
                
                     $dataProviderKlassen=new CActiveDataProvider('Klasse', array(
                     'criteria'=>array(
-                        'condition'=>'userId=' . Yii::app()->user->id, 
+                        'condition'=>'deleted!=1 AND userId=' . Yii::app()->user->id, 
                         )
                     ));  
                    
@@ -60,7 +60,7 @@ class SiteController extends Controller
             }
             
             //Schueler-Dashboard
-            else{    
+            else{     // see here also Klasse-Controller for easier way to use same view for teacher and pupils
                 $dataProviderKlassen=new CActiveDataProvider('UserDerKlasse', array(
                 'criteria'=>array(
                     'condition'=>'userId=' . Yii::app()->user->id, 

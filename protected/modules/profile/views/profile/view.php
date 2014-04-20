@@ -45,5 +45,4 @@ if(!Yii::app()->user->isGuest && Yii::app()->user->id == $model->id) {
     echo '&nbsp;';
     echo CHtml::link(Yum::t('Upload avatar image'), array('//avatar/avatar/editAvatar'), array('class' => 'btn'));
   }
-}
-
+}?>

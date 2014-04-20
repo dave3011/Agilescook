@@ -18,9 +18,13 @@ if (Yum::module()->debug) {
 Yum::renderFlash(); 
 
 if(!Yii::app()->user->isGuest)
-	echo $this->renderMenu();
-echo $content;  
-?>
+	echo $this->renderMenu();?>
+    
+    <div class="whitecontent">
+        <?php 
+            echo $content;  
+        ?>
+    </div>
 </div>
 
 <?php $this->endContent(); ?>

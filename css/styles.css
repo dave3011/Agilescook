@@ -5,6 +5,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     font-weight: inherit;
     margin: 0;
     padding: 0;
+    font-family: "Open Sans", "Arial","Helvetica","Lucida Grande","Verdana","Gill Sans",sans-serif;
     }
     
     input, textarea{
@@ -13,6 +14,15 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     ul{
         list-style-type:none;
+    }
+    
+    a{
+        text-decoration:none;
+    }
+    
+    a:hover, a:focus{
+        text-decoration:none;
+        color:inherit;
     }
     
     .floatingleft, .floatleft{
@@ -39,7 +49,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         text-align:left;
     }
     
-    .smaller{
+    .smaller, p.note, p.smaller{
         font-size:85%;
     }
     
@@ -50,6 +60,10 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     .color333{
         color:#333!important;
     }
+    .grey{
+        color:#999;
+    }
+
     
     .clearfix:after { content: " "; display: block; height: 0; clear: both; visibility: hidden; }  
     .clearfix { display: inline-block; }  
@@ -117,6 +131,9 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
  
     div:focus {outline: none;}
+
+    
+    
     
     html{
         height:100%;
@@ -146,6 +163,11 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         background: url("../images/bg_head.png") top center repeat-x;  
         float:left;  
         min-width:750px; 
+    }
+    
+    .bgred{
+        background:#b9294d!important;
+        color: #fff;
     }
     
     .subhead{
@@ -218,7 +240,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     }
     
     #subhead{
-        line-height:60px;
+        line-height:40px;
         color:#fff;
         font-family:'Salsa';
         text-align:center;
@@ -385,6 +407,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button_blue:hover{
         background-color:#2998df;
+        text-decoration:none;
     }
 
     .cta_button_blue.login{
@@ -508,6 +531,11 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .kachelcontent.white{
         background-color:#fff!important;
+        color:#333;
+    }
+    
+    .kachelcontent.superlightgrey{
+        background-color:#eee!important;
         color:#333;
     }
     
@@ -682,6 +710,11 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
        
     .gutter-sizer{
         width:1.9%;
+    }
+    
+    ul.widgetitems{
+        margin-left:0px;
+        padding:0px;
     }
     
     .widgetitems li{
@@ -1015,13 +1048,16 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         position:relative;
         min-height:500px;
     }
-    .whitecontent h1{
+    .whitecontent h1, .whitebox h1{
         font-size:42px;
         font-family:"Open Sans Light";
         padding-bottom:15px;
         }
+    .red .whitecontent h1{
+        color:#a8153c;
+    }
      
-    .whitecontent h2{
+    .whitecontent h2, .whitebox h2{
         font-size:28px;
         padding-top:32px;
         padding-bottom:10px;
@@ -1029,19 +1065,19 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         font-family:"Open Sans Light";
        }
        
-       .whitecontent h3{
+   .whitecontent h3, .whitebox h3{
         font-size:18px;
         padding-top:24px;
         padding-bottom:10px;
        }
 
- .whitecontent h3.subheading{
+   .whitecontent h3.subheading{
         font-size:18px;
         padding-top:0;
         padding-bottom:0;
        }
        
-     .whitecontent p{
+   .whitecontent p{
         font-size:14px;
         line-height:1.5;
         padding:8px 0;
@@ -1051,11 +1087,21 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         color:#32a0e6;
         text-decoration:none;
      }
-     
-     .whitecontent a:hover{
+       
+    .red .whitecontent td p{
+        font-size:13px;
+    }
+    
+    .whitecontent a:hover{
         text-decoration:underline;
      }
      
+     .whitecontent table .greybg td{
+        background:#e9e9e9;
+        border-right:3px solid #fff;
+        padding:8px;
+        text-align:center;
+    } 
      .whitecontent ul{
         margin-left:5%;
         font-size:14px;
@@ -1104,6 +1150,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         width:100%;
         
      }
+     
     
      
      .kachelcontainer{
@@ -1463,6 +1510,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button:hover{  
         background-color:#888;
+                text-decoration:none;
     }
     
     .cta_button_green, .addtolesson{
@@ -1476,6 +1524,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button_green:hover. .addtolesson:hover{
         background-color:#148845;
+        text-decoration:none;
     }
     
     .cta_button_orange, .play{
@@ -1489,13 +1538,14 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button_orange:hover, .play:hover{
         background-color:#d56503;
+        text-decoration:none;
     }
     
     .cta_button_white{
       padding:8px 20px;
         background-color:#fff;
         font-size:13px;
-        color:#666;
+        color:#666!important;
         text-decoration:none;
         -webkit-box-shadow: 2px 3px 1px 0 rgba(80,80,80,0.8);
         box-shadow: 2px 3px 1px 0 rgba(80,80,80,0.8);
@@ -1503,6 +1553,22 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button_white:hover{
         background-color:#efefef;
+        text-decoration:none;
+    }
+    
+    .cta_button_lightgrey{
+        padding:8px 20px;
+        background-color:#ddd;
+        font-size:13px;
+        color:#666!important;
+        text-decoration:none;
+        -webkit-box-shadow: 2px 3px 1px 0 rgba(80,80,80,0.8);
+        box-shadow: 2px 3px 1px 0 rgba(80,80,80,0.8);
+    }
+    
+    .cta_button_lightgrey:hover, a:hover.cta_button_lightgrey{
+        background-color:#dadada;
+        text-decoration:none;
     }
     
     .cta_button_blue{
@@ -1521,6 +1587,7 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
     
     .cta_button_blue:hover{
         background-color:#2998df;
+        text-decoration:none;
     }
 
     .cta_button_blue.login{
@@ -1544,8 +1611,9 @@ html, body, div, input, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockqu
         color:#fff!important;
     }
     
-    .cta_button_red:hover, .play:hover{
+    .cta_button_red:hover, .play:hover, a:hover.cta_button_red{
         background-color:#b22145;
+        text-decoration:none;
     }
     
     .play, .addtolesson, .addtoshare, #sharenowbutton, #sharelaterbutton, #sharesavedmaterialbutton, #savelessonbutton, #printlesson, #exportlesson, #gotosharedbutton, #submitlessondetails{
@@ -2136,4 +2204,24 @@ div.search-form
 	padding: 10px;
 	margin: 10px 0;
 	background: #eee;
+}
+
+    
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{
+        border-radius: 0;
+        background-color:#fff;
+    }
+
+#post-form textarea{
+    height:90px;
+}
+
+#head li.dropdown.open > a{
+    background:#ebebeb;
+}
+
+.nav-pills .dropdown-menu{
+    border-radius:0;
+    border-top:none;
 }

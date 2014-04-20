@@ -29,7 +29,7 @@ $this->pageTitle=Yii::app()->name;
             <div id="container"> 
                 <div class="gutter-sizer"></div>      
                 
-                <?php if(empty( Yii::app()->user->data()->avatar)){ ?>
+                <?php if(Yii::app()->user->data()->avatar == 'images/dummy_avatar.png'){ ?>
                  <div class="kachel grau">
                     <div class="kachelhead">Gestalte Dein Profil</div>
                      <div class="kachelcontent">
@@ -43,13 +43,23 @@ $this->pageTitle=Yii::app()->name;
                 <div class="kachel rot widget">
                     <div class="kachelhead schueler_icon">Meine Klassen</div>
                     <div class="kachelcontent">
-                    
-                    <?php $this->widget('zii.widgets.CListView', array(
-                        	'dataProvider'=>$dataProviderKlassen,
-                        	'itemView'=>'_singleclasslehrer',
-                            'enablePagination'=>false,
-                            'summaryText'=>false
-                        )); ?>
+                        <ul class="widgetitems">
+                            <?php 
+                                if(empty($dataProviderKlassen->data)){
+                                    echo "<li><p>Hier können Sie Ihren digitalen Klassenraum anlegen um Materialien mit Ihren Schülern zu teilen und diesen Nachrichten zu schicken.<br/>&nbsp;</p>";
+                                    echo CHtml::link('Jetzt neue Klasse anlegen', $this->createUrl('//klasse/create'), array('class'=>'cta_button_white'));
+                                    echo "<p><br/>Probieren Sie es aus – es ist ganz einfach und dabei sehr sicher.</p></li>";
+                                }  
+                                else{
+                                    $this->widget('zii.widgets.CListView', array(
+                                    	'dataProvider'=>$dataProviderKlassen,
+                                    	'itemView'=>'_singleclasslehrer',
+                                        'enablePagination'=>false,
+                                        'summaryText'=>false
+                                    ));     
+                                }  
+                            ?>
+                        </ul>
                     </div> 
                     <div class="kachelfoot">
                         <?php echo CHtml::link('Zur Klassenverwaltung ...<span class="scookicons">&#58942;</span>', $this->createUrl('//klasse'), array());?>
@@ -60,26 +70,30 @@ $this->pageTitle=Yii::app()->name;
                     <div class="kachelhead buecher_icon">Meine Bücher</div>
                     <div class="kachelcontent">
                         <ul class="widgetitems">
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td valign="top" width="40%"><a href="index.php/bookviewer/"><img src="images/englishg.png" width="130" height="178"/></a></td>
-                                        <td valign="top"><b><span class="bigger">English G 21</span><br /></b><br />5. Schuljahr<br />Ausgabe D1 - Band 1<br /><span class="smaller">Schülerbuch</span></td>
-                                    </tr>
-                                </table>
-                            </li>
-                            <li>
-                                <table>
-                                    <tr>
-                                        <td valign="top" width="40%"><a href="index.php/bookviewer/"><img src="images/fundamente.png" width="130" height="180"/></a></td>
-                                        <td valign="top"><b><span class="bigger">Fundamente der Mathematik</span><br /></b><br />6. Schuljahr<br />Baden-Württemberg<br /><span class="smaller">Lehrerfassung</span></td>
-                                    </tr>
-                                </table>
-                            </li>
+                            <a href="index.php/bookviewer/">
+                                <li>
+                                    <table>
+                                        <tr>
+                                            <td valign="top" width="40%"><img src="images/englishg.png" width="130" height="178"/></td>
+                                            <td valign="top"><b><span class="bigger">English G 21</span><br /></b><br />5. Schuljahr<br />Ausgabe D1 - Band 1<br /><span class="smaller">Schülerbuch</span></td>
+                                        </tr>
+                                    </table>
+                                </li>
+                                </a>
+                                <a href="index.php/bookviewer/">
+                                <li>
+                                    <table>
+                                        <tr>
+                                            <td valign="top" width="40%"><img src="images/fundamente.png" width="130" height="180"/></td>
+                                            <td valign="top"><b><span class="bigger">Fundamente der Mathematik</span><br /></b><br />6. Schuljahr<br />Baden-Württemberg<br /><span class="smaller">Lehrerfassung</span></td>
+                                        </tr>
+                                    </table>
+                                </li>
+                                </a>
                         </ul>
                     </div> 
                     <div class="kachelfoot">
-                        <a href="buchregal.php">Zu meinem Bücherregal ...<span class="scookicons">&#58942;</span></a>
+                      <a href="index.php/site/page?view=buchregal">Zu meinem Bücherregal ...<span class="scookicons">&#58942;</span></a>
                     </div>                    
                 </div>
                 
@@ -88,30 +102,38 @@ $this->pageTitle=Yii::app()->name;
                     <div class="kachelhead weiterwissen_icon">Weiterwissen</div>
                     <div class="kachelcontent">
                         <ul class="widgetitems">
+                            <a href="index.php/site/page?view=weiterwissen-artikel">
                             <li>
                                 <table>
                                     <tr>
-                                        <td valign="top"><a href="weiterwissen.php"><img src="images/weiterwissen_2.png" width="145" height="90"/></a></td>
+                                        <td valign="top"><a href="index.php/site/page?view=weiterwissen-artikel"><img src="images/weiterwissen_2.png" width="145" height="90"/></a></td>
                                         <td valign="top"><span class="smaller">Hinweise zu heutigen Standards</span><br /><b>Qualitätskriterien erfolgreicher Elternarbeit</b></td>
                                     </tr>
                                 </table>
                             </li>
+                            </a>
+                            
+                            <a href="index.php/site/page?view=weiterwissen-artikel">
                             <li>
                                 <table>
                                     <tr>
-                                        <td valign="top"><a href="weiterwissen.php"><img src="images/weiterwissen_2.png" width="145" height="96"/></a></td>
+                                        <td valign="top"><a href="index.php/site/page?view=weiterwissen-artikel"><img src="images/weiterwissen_2.png" width="145" height="96"/></a></td>
                                         <td valign="top"><span class="smaller">Hinweise zu heutigen Standards</span><br /><b>Qualitätskriterien erfolgreicher Elternarbeit</b></td>
                                     </tr>
                                 </table>
                             </li>
+                            </a>
+                            
+                            <a href="index.php/site/page?view=weiterwissen-artikel">
                              <li>
                                 <table>
                                     <tr>
-                                        <td valign="top"><a href="weiterwissen.php"><img src="images/weiterwissen_3.png" width="145" height="96"/></a></td>
+                                        <td valign="top"><img src="images/weiterwissen_3.png" width="145" height="96"/></td>
                                         <td valign="top"><span class="smaller">Hinweise zu heutigen Standards</span><br /><b>Qualitätskriterien erfolgreicher Elternarbeit</b></td>
                                     </tr>
                                 </table>
                             </li>
+                            </a>
                         </ul>
                     </div> 
                     <div class="kachelfoot">
@@ -122,7 +144,7 @@ $this->pageTitle=Yii::app()->name;
                 <div class="kachel blau">
                     <div class="kachelhead freischalten_icon">Jetzt E-Book freischalten</div>
                     <div class="kachelcontent">
-                       <form id="freischalte_widget" method="post" action="buchansicht.php">
+                       <form id="freischalte_widget" method="post" action="index.php/bookviewer/">
                                 <input type="text" placeholder="Lizenzcode eingeben" id="freischalten_textfeld" name="freischalten_textfeld"/>                             
                                 <input type="submit" value="" class="cta_button_white inputsubmit"/>                            
                             </form>
@@ -130,10 +152,11 @@ $this->pageTitle=Yii::app()->name;
                         <p>Der Code in Ihrem Schulbuch erlaubt Ihnen die (kostenlose) Nutzung des E-Books auf scook.</p>
                     </div> 
                     <div class="kachelfoot">
-                        <a href="#">Demobuch anschauen ...<span class="scookicons">&#58942;</span></a>
+                        <a href="index.php/bookviewer/">Demobuch anschauen ...<span class="scookicons">&#58942;</span></a>
                     </div>                    
                 </div>                
                 
+                <!--
                 <div class="kachel orange">
                     <div class="kachelhead folder_icon">Unterrichtsmaterial finden</div>
                     <div class="kachelcontent">
@@ -147,10 +170,12 @@ $this->pageTitle=Yii::app()->name;
                         <a href="#">Zu den Unterrichtsmaterialien ...<span class="scookicons">&#58942;</span></a>
                     </div>                    
                 </div>
+                -->
                 
                 <div class="kachel gruen widget">
                     <div class="kachelhead grid_icon">Meine Unterrichtsstunden</div>
                     <div class="kachelcontent">
+                
                         <?php $this->widget('zii.widgets.CListView', array(
                         	'dataProvider'=>$dataProviderStunden,
                         	'itemView'=>'_singlelesson',
@@ -166,7 +191,9 @@ $this->pageTitle=Yii::app()->name;
                 <div class="kachel grau">
                     <div class="kachelhead">Entdecken Sie scook im Video</div>
                     <div class="kachelcontent vollbild">
-                        <img src="images/image_video.png" width="301" height="177"/>
+                        <a href="index.php/site/page?view=scook-video">
+                            <img src="images/image_video.png" width="301" height="177"/>                        
+                        </a>
                     </div>                    
                 </div>    
 

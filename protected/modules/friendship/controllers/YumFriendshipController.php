@@ -5,6 +5,8 @@ Yii::import('application.modules.user.models.*');
 Yii::import('application.modules.friendship.models.*');
 
 class YumFriendshipController extends YumController {
+    public $bodyclass='subhead withwhite';
+    
 	// make sure that friendship is enabled in the configuration
 	public function beforeAction($action) {
 		if(!Yum::hasModule('friendship')) 

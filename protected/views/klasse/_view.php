@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('connectCode')); ?>:</b>
-	<?php echo CHtml::encode($data->connectCode); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('studentCommunication')); ?>:</b>
+	<?php echo CHtml::encode($data->studentCommunication); ?>
 	<br />
 
 

@@ -3,6 +3,7 @@
 class YumDefaultController extends YumController {
 	
 	public $defaultAction = 'index';
+    public $bodyclass='subhead withwhite';
     
     /**
 	 * @return array of arrays

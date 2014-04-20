@@ -543,7 +543,11 @@ class YumUser extends YumActiveRecord
 			$this->setPassword($password);
 		}
 		$this->activationKey = $this->generateActivationKey(false);
-		$this->createtime = time();
+        
+        //DB: addes for default dummy user avatar
+        $this->avatar = 'images/dummy_avatar.png';
+		
+        $this->createtime = time();
 		$this->lastvisit = 0;
 		$this->superuser = 0;
 

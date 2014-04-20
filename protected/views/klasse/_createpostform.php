@@ -13,11 +13,11 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	'enableAjaxValidation'=>true,
+    'clientOptions'=>array(
+                'validateOnSubmit'=>true,
+            )
+    )); ?>
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -31,6 +31,11 @@
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'content'); ?>
 	</div>
+    <div class="row">
+        <input type="hidden" name="file_list" id="file_list" value=""/>
+        <label>Datei anhängen</label>
+        <input type="file" value="Datei hinzufügen" name="message_file" id="message_file"/>
+    </div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Nachricht absenden' : 'Nachricht absenden', array('class'=>'cta_button_red')); ?>

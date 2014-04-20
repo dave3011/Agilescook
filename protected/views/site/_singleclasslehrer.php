@@ -3,7 +3,7 @@
 /* @var $data Klasse */
 ?>
 
-<div class="view widgetitems" >
+<li>
     <table>
         <tr>
             <td>
@@ -16,9 +16,8 @@
                 </b>
             	<br /><br />
                 <?php echo $data->memberCount;?> Mitglied<?php if($data->memberCount != 1) echo "er";?>
-                <br />
-                Connectcode: <?php echo $data->connectCode;?>
+                
             </td>
         </tr>
     </table>
-</div>
+</li>

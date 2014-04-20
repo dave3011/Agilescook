@@ -4,7 +4,8 @@
 -->
 </style>
 
-<div class="whitecontent100">
+
+<div class="content70">
 <div class="form">
 
 <?php
@@ -35,19 +36,23 @@ if(Yum::module('avatar')->avatarMaxWidth != 0)
 				'//avatar/avatar/editAvatar', 'id' => $model->id), 'POST', array(
 	'enctype' => 'multipart/form-data'));
 	echo '<div class="row">';
-	echo CHtml::activeLabelEx($model, 'avatar');
-	echo CHtml::activeFileField($model, 'avatar');
-	echo CHtml::error($model, 'avatar');
+	
 	echo '</div>';
 	if(Yum::module('avatar')->enableGravatar) 
 	echo CHtml::link(Yum::t('Use Gravatar'), array(
-				'//avatar/avatar/enableGravatar', 'id' => $model->id));
+				'//avatar/avatar/enableGravatar', 'id' => $model->id), array('class'=>'btn'));
 
 	echo '&nbsp;';
 	echo CHtml::link(Yum::t('Remove Avatar'), array(
 				'//avatar/avatar/removeAvatar', 'id' => $model->id));
-
-	echo CHtml::submitButton(Yum::t('Upload avatar'));
+	
+    echo '<div class="row">';
+	echo CHtml::activeLabelEx($model, 'avatar');
+	echo CHtml::activeFileField($model, 'avatar');
+	echo CHtml::error($model, 'avatar');
+    echo CHtml::submitButton(Yum::t('Upload avatar'), array('class'=>'btn'));
+	echo '</div>';
+	
 	echo CHtml::endForm();
 
 ?>

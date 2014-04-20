@@ -11,7 +11,7 @@ class UserModule extends CWebModule {
 	public $debug = false;
 
 	//layout related control vars
-	public $baseLayout = 'application.views.layouts.main';
+	public $baseLayout = 'application.views.layouts.main_whitecontent';
 	public $layout = 'application.modules.user.views.layouts.yum';
 	public $loginLayout = 'application.modules.user.views.layouts.login';
 	public $adminLayout = 'application.modules.user.views.layouts.yum';
@@ -68,7 +68,7 @@ class UserModule extends CWebModule {
 	// PHPMailer to use PHPMailer as emailing lib.
 	public $mailer = 'yum'; 
 	public $phpmailer = null; // PHPMailer array options.
-	public $adminEmail = 'admin@example.com';
+	public $adminEmail = 'david.bernhard@cornelsen-schulverlage.de';
 
 	public $pageSize = 10;
 

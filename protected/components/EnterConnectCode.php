@@ -36,7 +36,7 @@ function send()
  
   $.ajax({
    type: 'POST',
-    url: '<?php echo Yii::app()->createAbsoluteUrl("userderklasse/enterConnectCode"); ?>',
+    url: '<?php echo Yii::app()->createAbsoluteUrl("userDerKlasse/enterConnectCode"); ?>',
     data:data,
     success:function(data){                
                 $('#enterconnectcode-form .errormsg').html(data).show();

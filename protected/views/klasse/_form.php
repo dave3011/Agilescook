@@ -12,7 +12,7 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -31,11 +31,11 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-<!--<div class="row">
-		<?php echo $form->labelEx($model,'connectCode'); ?>
-		<?php echo $form->textField($model,'connectCode',array('size'=>6,'maxlength'=>6)); ?>
-		<?php echo $form->error($model,'connectCode'); ?>
-	</div>-->
+<div class="row">
+		<?php echo $form->labelEx($model,'studentCommunication'); ?>
+		<?php echo $form->checkBox($model,'studentCommunication',array('size'=>3,'maxlength'=>1, 'value'=>1, 'uncheckValue'=>0)); ?>
+		<?php echo $form->error($model,'studentCommunication'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Klasse anlegen' : 'Save', array('class'=>'cta_button_red')); ?>

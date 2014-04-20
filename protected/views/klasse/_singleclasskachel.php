@@ -13,7 +13,6 @@
     </div>
     <div class="kachelcontent white color333">
         <p><?php echo $data->memberCount;?> Mitglied<?php if($data->memberCount != 1) echo "er";?></p>
-        <p>Connectcode: <?php echo $data->connectCode;?></p>
     </div>
 </div>
 

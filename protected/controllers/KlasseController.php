@@ -33,7 +33,7 @@ class KlasseController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'kommunikation'),
+				'actions'=>array('create', 'created', 'update', 'settings', 'step1', 'step3', 'printcodes', 'kommunikation'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -74,22 +74,59 @@ class KlasseController extends Controller
 		$model=new Klasse;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Klasse']))
 		{
 			$model->attributes=$_POST['Klasse'];
             
-            $model->connectCode = substr(md5(time()),0,6); //Generate random connectCode
-            
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            if($model->save()){
+                
+                // if classsize is set, then generate invitation codes
+                if(isset($_POST['classsize'])){
+                    
+                    /** Generate connectcodes basing on number given*/
+                    $connectCodeList = array();
+                    for($i=0; $i < $_POST['classsize']; $i++){
+                       $randomcode = substr( md5(time().$i.Yii::app()->user->id ),0,6); 
+                       array_push($connectCodeList, $randomcode);                      
+                    }
+                    
+                    foreach($connectCodeList as $singleConnectCode){
+                        $connectCodeRow = new ConnectCode;
+                        $connectCodeRow->connectCode = $singleConnectCode;    
+                        $connectCodeRow->klasseId = $model->id;
+                        $connectCodeRow->createTime = time();
+                        $connectCodeRow->status = 0;
+                        $connectCodeRow->userId = Yii::app()->User->id;  
+                        $connectCodeRow->save();                    
+                    }
+                  
+                   $this->redirect(array(
+                        'created',
+                        'id'=>$model->id,
+                        'connectCodeList'=>$connectCodeList)
+                    ); 
+                    /* $this->render('created',array(
+            			'klasse'=>$this->loadModel($model->id),
+                        'connectCodeList'=>$connectCodeList,
+            		)); */
+                }
+            }
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            //Normal and initial view for Create
+    		$this->render('create',array(
+    			'model'=>$model,
+    		));     
 	}
+    
+    public function actionCreated($id)
+	{
+	    $this->render('created',array(
+			'klasse'=>$this->loadModel($id),
+            //'connectCodeList'=>$connectCodeList,
+		));   
+    }
 
 	/**
 	 * Updates a particular model.
@@ -115,6 +152,70 @@ class KlasseController extends Controller
 		));
 	}
     
+    public function actionSettings($id)
+	{
+	   $model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Klasse']))
+		{
+			$model->attributes=$_POST['Klasse'];
+			if($model->save())
+				$this->redirect(array('kommunikation','id'=>$model->id));
+		}
+	       //DB: might be replacable with relation in Model 
+        $dataProviderKlassen=new CActiveDataProvider('Klasse', array(
+                'criteria'=>array(
+                    'condition'=>'deleted!=1 AND userId=' . Yii::app()->user->id, 
+                    )
+                )
+            );
+		//DB: might be replacable with relation in Model   
+         $dataProviderSchueler=new CActiveDataProvider('UserDerKlasse', array(
+                'criteria'=>array(
+                    'condition'=>'klasseId=' . $id, 
+                    )
+                )
+            );
+            
+		$this->render('settings',array( 
+             'klasse'=>$this->loadModel($id), 
+             'schuelerliste'=>$dataProviderSchueler,
+             'klassenliste'=>$dataProviderKlassen          
+		));
+	}
+    
+    public function actionStep1()
+	{
+        $model=new Klasse;
+        $outputJs = Yii::app()->request->isAjaxRequest;
+		$this->renderPartial('_form_step1',
+            array('model'=>$model),
+            false,
+            $outputJs
+        );  
+	}
+    
+    public function actionStep3($id)
+	{
+        $this->renderPartial('_form_step3', array(
+            'id'=>$id,
+            'klasse'=>$this->loadModel($id),
+        ));
+	}
+    
+    public function actionPrintcodes($id)
+	{
+	    $klasse=$this->loadModel($id);
+        $connectCodeList = $klasse->connectCodes;
+        $this->render('printcodes', array(
+            'connectCodeList'=>$connectCodeList,
+            'klasse'=>$klasse,
+        ));
+	}
+    
     public function actionKommunikation($id)
 	{
 		
@@ -127,13 +228,16 @@ class KlasseController extends Controller
                 )
             )
         );   
-
+        
+        //DB: might be replacable with relation in Model 
         $dataProviderKlassen=new CActiveDataProvider('Klasse', array(
                 'criteria'=>array(
-                    'condition'=>'userId=' . Yii::app()->user->id, 
+                    'condition'=>'deleted!=1 AND userId=' . Yii::app()->user->id, 
                     )
                 )
             );
+            
+         //DB: might be replacable with relation in Model   
          $dataProviderSchueler=new CActiveDataProvider('UserDerKlasse', array(
                 'criteria'=>array(
                     'condition'=>'klasseId=' . $id, 
@@ -143,7 +247,7 @@ class KlasseController extends Controller
 
 		$this->render('kommunikation',array(
 			'dataProvider'=>$dataProvider, 
-             'klasse'=>Klasse::model()->findByPk($id), 
+             'klasse'=>$this->loadModel($id), 
              'klassenliste'=>$dataProviderKlassen, 
              'schuelerliste'=>$dataProviderSchueler,          
 		));
@@ -157,11 +261,17 @@ class KlasseController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        //db: echeck if this works first
+		$this->loadModel($id);
+        $model->deleted = 1;
+        
+        if($model->save())
+		{
+		  if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));	
+		}
+		
+		
 	}
 
 	/**
@@ -172,7 +282,7 @@ class KlasseController extends Controller
 	   if(Yii::app()->user->hasRole('Lehrer_auth') || Yii::app()->user->hasRole('Lehrer_nicht_auth')){
     	   $dataProvider=new CActiveDataProvider('Klasse', array(
                 'criteria'=>array(
-                    'condition'=>'userId=' . Yii::app()->user->id, 
+                    'condition'=>'deleted!=1 AND userId=' . Yii::app()->user->id, 
                     )
                 )
             );
@@ -182,10 +292,12 @@ class KlasseController extends Controller
     			'dataProvider'=>$dataProvider,
     		));    
 	   }
-       else{ 
+       
+       
+       else{//User is Pupil 
     	   $dataProvider=new CActiveDataProvider('UserDerKlasse', array(
                 'criteria'=>array(
-                    'condition'=>'userId=' . Yii::app()->user->id, 
+                    'condition'=>'userId=' . Yii::app()->user->id, //deleted!=1 condition is in view where lazyloaded model is loaded or try this one http://stackoverflow.com/questions/11333707/dataprovider-and-relations-yii
                     )
                 )
             );

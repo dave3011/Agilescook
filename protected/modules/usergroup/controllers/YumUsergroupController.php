@@ -1,6 +1,8 @@
 <?php
 
 class YumUsergroupController extends YumController {
+    public $bodyclass='subhead withwhite';
+    
 	public function beforeAction($event) {
 		if (Yii::app()->user->isAdmin())
 			$this->layout = Yum::module('usergroup')->adminLayout;

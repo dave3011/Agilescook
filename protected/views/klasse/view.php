@@ -24,6 +24,6 @@ $this->menu=array(
 		'id',
 		'userId',
 		'name',
-		'connectCode',
+		'studentCommunication',
 	),
 )); ?>

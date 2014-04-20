@@ -82,7 +82,6 @@ class YumRegistrationController extends YumController {
 		$profile = new YumProfile;
 
 		$this->performAjaxValidation('YumRegistrationForm', $form);
-
 		if (isset($_POST['YumRegistrationForm'])) { 
 			$form->attributes = $_POST['YumRegistrationForm'];
 			$profile->attributes = $_POST['YumProfile'];
@@ -93,13 +92,14 @@ class YumRegistrationController extends YumController {
 			if(!$form->hasErrors() && !$profile->hasErrors()) {
 			     
 				$user = new YumUser;
+                //DB added to use email for registration
 				$user->register($profile->email, $form->password, $profile);
+               
 				$user->profile = $profile;
                
-                //DB: Add user-role after successful registration basing on chosen value
+               
                 $role = array($_POST['YumRegistrationForm']['roles']);
-                echo "rolle: "; print_r($role);
-                $role = array(1);
+                //$role = array(1); //DB To do
                 
                 $user->syncRoles($role);
 
@@ -182,7 +182,7 @@ class YumRegistrationController extends YumController {
 				Yii::app()->user->login($login);	
 			} 
 
-			$this->render(Yum::module('registration')->activationSuccessView);
+			$this->render(Yum::module('registration')->activationSuccessView, array('model'=>new YumUserLogin()));
 		}
 		else 
 			$this->render(Yum::module('registration')->activationFailureView, array(
